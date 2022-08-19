@@ -1,0 +1,22 @@
+steps:
+name: ASP.NET CI
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@master
+
+    - name: Setup NuGet.exe
+      uses: nuget/setup-nuget@v1
+
+    - name: restoring nuget
+      working-directory: win32
+      run: nuget restore
+    
+    - name: Setup MSBuild.exe
+      uses: warrenbuckley/Setup-MSBuild@v1
+    
+    - name: MSBuild
+      working-directory: win32
+      run: msbuild MyProject.csproj
