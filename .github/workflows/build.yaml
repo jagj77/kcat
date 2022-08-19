@@ -1,5 +1,6 @@
 steps:
 name: ASP.NET CI
+on : [push]
 jobs:
   build:
     runs-on: windows-latest
