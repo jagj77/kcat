@@ -15,4 +15,4 @@ jobs:
   
     - name: MSBuild
       working-directory: win32
-      run: msbuild MyProject.csproj
+      run: msbuild
