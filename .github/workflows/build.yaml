@@ -2,7 +2,7 @@ name: ASP.NET CI
 on : [push]
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: windows-2019
     steps:
     - uses: actions/checkout@master
 
@@ -12,6 +12,15 @@ jobs:
     - name: restoring nuget
       working-directory: win32
       run: nuget restore
+  
+    - name: Add msbuild to PATH
+      uses: microsoft/setup-msbuild@v1.1
+  
+    - uses: ilammy/msvc-dev-cmd@v1
+      with:
+        arch: x86
+        sdk: 8.1
+        
   
     - name: MSBuild
       working-directory: win32
